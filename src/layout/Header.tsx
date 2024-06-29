@@ -21,4 +21,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  tabBarContainer: {
+    width: 200,
+    height: 46,
+  },
 });

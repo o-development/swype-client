@@ -1,5 +1,5 @@
 import { useSolidAuth } from "@ldo/solid-react";
-import { Button, Card, Icon, Input, Modal, Text } from "@ui-kitten/components";
+import { Button, Icon, Input, Modal } from "@ui-kitten/components";
 import { FunctionComponent, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
@@ -15,7 +15,7 @@ export const LoginButton: FunctionComponent<LoginButtonProps> = ({ size }) => {
   if (session.isLoggedIn) {
     return (
       <Button size={size} onPress={logout}>
-        Log In
+        Log Out
       </Button>
     );
   }

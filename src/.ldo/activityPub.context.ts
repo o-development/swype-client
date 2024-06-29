@@ -8,6 +8,7 @@ import { ContextDefinition } from "jsonld";
 export const activityPubContext: ContextDefinition = {
   type: {
     "@id": "@type",
+    "@container": "@set",
   },
   Object: "https://www.w3.org/ns/activitystreams#Object",
   attachment: {
@@ -174,7 +175,7 @@ export const activityPubContext: ContextDefinition = {
   },
   url: {
     "@id": "https://www.w3.org/ns/activitystreams#url",
-    "@type": ["http://www.w3.org/2001/XMLSchema#anyURI", "@id"],
+    "@type": "http://www.w3.org/2001/XMLSchema#anyURI",
     "@container": "@set",
   },
   to: {

@@ -12,14 +12,8 @@ export const Root: FunctionComponent = () => {
     <BrowserSolidLdoProvider>
       <IconRegistry icons={EvaIconsPack} />
       <ApplicationProvider {...eva} theme={eva.dark}>
-        <SubRoot />
+        <MainLayout />
       </ApplicationProvider>
     </BrowserSolidLdoProvider>
   );
-};
-
-export const SubRoot: FunctionComponent = () => {
-  // usePrepareProfileOnInitialLoad();
-
-  return <MainLayout />;
 };

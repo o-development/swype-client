@@ -2,10 +2,10 @@ import { Text } from "@ui-kitten/components";
 import { FunctionComponent } from "react";
 import { StyleSheet, View } from "react-native";
 
-export const Feed: FunctionComponent = () => {
+export const Friends: FunctionComponent = () => {
   return (
     <View style={styles.container}>
-      <Text>Feed</Text>
+      <Text>Friends</Text>
     </View>
   );
 };

@@ -1,4 +1,5 @@
 import { useLdo, useSolidAuth } from "@ldo/solid-react";
+import { useState } from "react";
 import { useAsyncEffect } from "use-async-effect";
 import { v4 } from "uuid";
 
@@ -9,11 +10,12 @@ import {
   PersonShapeType,
 } from "../.ldo/activityPub.shapeTypes";
 
-export function usePrepareProfileOnInitialLoad() {
+export function usePrepareProfileOnInitialLoad(): boolean {
   const { dataset, getResource } = useLdo();
   const { session } = useSolidAuth();
+  const [completedSetup, setCompletedSetup] = useState(false);
 
-  return useAsyncEffect(async () => {
+  useAsyncEffect(async () => {
     if (session.webId) {
       const profileResource = getResource(session.webId);
       const [readResult, rootResult] = await Promise.all([
@@ -34,7 +36,7 @@ export function usePrepareProfileOnInitialLoad() {
         .write(session.webId)
         .fromSubject(session.webId);
       // Is a person type
-      if (!person.type.some((val) => val["@id"] === "Person")) {
+      if (!person.type?.some((val) => val["@id"] === "Person")) {
         person.type.push({ "@id": "Person" });
       }
       // Has an outbox
@@ -61,6 +63,9 @@ export function usePrepareProfileOnInitialLoad() {
       if (commitResult.isError) {
         displayError(commitResult);
       }
+      setCompletedSetup(true);
     }
   }, [session.webId]);
+
+  return completedSetup;
 }
